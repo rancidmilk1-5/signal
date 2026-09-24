@@ -59,10 +59,8 @@ const Signal = {
 
 	Fire = function<T...>(self: _Signal<T...>, ...: T...): ()
 		const temp = table.clone(self._connections)
-		for i = #temp, 1 do
-			if self._connections[i] == nil then continue end
-			const connection = temp[i]
-			task.spawn(worker(), connection._func, ...)
+		for i = #temp, 1, -1 do
+			task.spawn(worker(), temp[i]._func, ...)
 		end
 	end,
 
