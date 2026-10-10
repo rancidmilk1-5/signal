@@ -23,7 +23,7 @@ export type Signal<T... = ...any> = {
 	Connect: (self: Signal<T...>, callback: (T...) -> ()) -> Connection<T...>,
 	Once: (self: Signal<T...>, callback: (T...) -> ()) -> Connection<T...>,
 	Wait: & ( (self: Signal<T...>) -> T... ) 
-	      & ( (self: Signal<T...>, timeout: number) -> (nil|T...) ),
+	      & ( (self: Signal<T...>, timeout: number) -> (T...|nil) ),
 	DisconnectAll: (self: Signal<T...>) -> (),
 	Destroy: (self: Signal<T...>) -> (),
 }
